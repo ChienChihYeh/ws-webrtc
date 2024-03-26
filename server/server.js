@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
-import http from "http";
+import { createServer } from "http";
 import router from "./routes.js";
 import { createSocket, setupSocket } from "./sockets.js";
 
@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 app.use(cors());
 app.use(express.static("../client/dist"));
-const server = http.createServer(app);
+const server = createServer(app);
 const io = createSocket(server);
 setupSocket(io);
 
