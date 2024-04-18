@@ -29,13 +29,7 @@ export default function Chat() {
     );
   }, []);
 
-  useEffect(() => {
-    if (isMuted) {
-      localVideo.current.muted = true;
-    } else {
-      localVideo.current.muted = false;
-    }
-  }, [isMuted]);
+  localVideo.current.muted = isMuted;
 
   return (
     <>
